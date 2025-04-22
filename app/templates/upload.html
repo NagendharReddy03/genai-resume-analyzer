@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ app_name }}</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; }
+        h1 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
+        form { background: #f9f9f9; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        input[type="file"] { margin: 10px 0; padding: 10px; border: 1px solid #ddd; }
+        textarea { width: 100%; height: 100px; margin: 10px 0; padding: 10px; }
+        button { background: #3498db; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #2980b9; }
+    </style>
+</head>
+<body>
+    <h1>{{ app_name }} 🤖</h1>
+    <form method="post" action="/analyze" enctype="multipart/form-data">
+        <input type="file" name="resume" accept=".pdf,.docx,.txt" required>
+        <textarea name="job_desc" placeholder="Paste job description here..."></textarea>
+        <button type="submit">Analyze Resume with AI</button>
+    </form>
+</body>
+</html>

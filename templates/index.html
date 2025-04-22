@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GenAI Resume Analyzer</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #f8f9fa, #e0eafc);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .hero {
+      padding: 100px 0;
+    }
+    .upload-box {
+      border: 2px dashed #6c757d;
+      padding: 40px;
+      background: white;
+      border-radius: 15px;
+      transition: all 0.3s;
+    }
+    .upload-box:hover {
+      background: #f1f1f1;
+      border-color: #0d6efd;
+    }
+    footer {
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold text-primary" href="#">🚀 GenAI Resume Analyzer</a>
+    <div class="collapse navbar-collapse justify-content-end">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a href="{{ url_for('auth.login') }}" class="nav-link">Login</a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ url_for('auth.register') }}" class="nav-link">Register</a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ url_for('main.analyze_resume') }}" class="nav-link">Analyze Resume</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero text-center">
+  <div class="container">
+    <h1 class="display-4 fw-bold text-primary">AI-Powered Resume Analyzer</h1>
+    <p class="lead mb-5">Upload your resume and unlock career opportunities with GenAI ✨</p>
+    <img src="https://undraw.io/assets/illustrations/undraw_online_resume_re_ru7s.svg" alt="Resume Illustration" class="img-fluid mb-5" style="max-width: 400px;">
+    <div class="d-flex justify-content-center">
+      <a href="{{ url_for('auth.login') }}" class="btn btn-primary btn-lg mx-2">Login</a>
+      <a href="{{ url_for('auth.register') }}" class="btn btn-success btn-lg mx-2">Register</a>
+      <a href="{{ url_for('main.analyze_resume') }}" class="btn btn-warning btn-lg mx-2">Analyze Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-white text-muted text-center py-3 shadow-sm small">
+  &copy; 2025 GenAI Resume Analyzer. Built with ❤️ and AI.
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

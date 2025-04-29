@@ -1,8 +1,10 @@
 import os
-
-BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+basedir = os.path.abspath(os.path.dirname(__file__))
 
 class Config:
-    SECRET_KEY = 'your-secret-key'  # You can generate a random key if needed
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(BASE_DIR, 'instance', 'site.db')
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'dev-secret-key'
+    SQLALCHEMY_DATABASE_URI = (
+        os.environ.get('DATABASE_URL')
+        or 'sqlite:///' + os.path.join(basedir, 'instance', 'site.db')
+    )
     SQLALCHEMY_TRACK_MODIFICATIONS = False

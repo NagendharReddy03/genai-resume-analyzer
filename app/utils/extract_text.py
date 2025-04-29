@@ -1,34 +1,36 @@
-import os
-import openai
+from pathlib import Path
+from typing import List
 
-# Load OpenAI key from environment (or set directly)
-openai.api_key = os.getenv("OPENAI_API_KEY")
+import pdfplumber
 
-def extract_and_analyze_text(file_path):
-    try:
-        # Read uploaded file content
-        with open(file_path, 'r', encoding='utf-8') as f:
-            resume_text = f.read()
+__all__ = ["extract_text_from_pdf"]
 
-        # Call OpenAI API for feedback
-        response = openai.ChatCompletion.create(
-            model="gpt-4",
-            messages=[
-                {
-                    "role": "system",
-                    "content": "You are a resume reviewer AI. Provide professional, constructive feedback on resumes."
-                },
-                {
-                    "role": "user",
-                    "content": f"Here is the resume:\n\n{resume_text}\n\nGive feedback."
-                }
-            ],
-            temperature=0.7,
-            max_tokens=500
-        )
 
-        ai_feedback = response['choices'][0]['message']['content']
-        return ai_feedback
+def extract_text_from_pdf(pdf_path: Path) -> str:
+    """Extract plain text from a PDF file.
 
-    except Exception as e:
-        return f"Error during AI analysis: {str(e)}"
+    Parameters
+    ----------
+    pdf_path : Path
+        Absolute or relative path to the PDF file the user uploaded.
+
+    Returns
+    -------
+    str
+        The concatenated text contents of every page in the PDF, with new‑line
+        separators preserved where possible. If a page has no text it is
+        skipped.
+    """
+
+    if not pdf_path.exists() or pdf_path.suffix.lower() != ".pdf":
+        raise FileNotFoundError(f"PDF not found: {pdf_path}")
+
+    text_chunks: List[str] = []
+    with pdfplumber.open(str(pdf_path)) as pdf:
+        for page in pdf.pages:
+            extracted = page.extract_text() or ""
+            text_chunks.append(extracted)
+
+    # Remove empty strings and join with double new‑lines for readability
+    full_text = "\n\n".join(chunk for chunk in text_chunks if chunk.strip())
+    return full_text.strip()

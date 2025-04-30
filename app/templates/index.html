@@ -1,12 +1,68 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="text-center">
-  <h1>Welcome to GenAI Resume Analyzer</h1>
-  <p class="lead">Upload your resume and get AI-powered feedback.</p>
-  {% if current_user.is_authenticated %}
-    <a href="{{ url_for('main.analyze') }}" class="btn btn-primary">Analyze a Resume</a>
-  {% else %}
-    <a href="{{ url_for('auth.login') }}" class="btn btn-primary">Login to Begin</a>
-  {% endif %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <h1 class="display-4 mb-4 text-white">AI-Powered Resume Analysis</h1>
+            <p class="lead text-white mb-5">Get instant feedback on your resume using advanced AI analysis</p>
+            
+            <div class="card resume-card shadow-lg">
+                <div class="card-body p-5">
+                    <div class="dropzone" id="dropzone">
+                        <i class="bi bi-file-earmark-arrow-up fs-1 text-primary"></i>
+                        <h3 class="mt-3">Drag & Drop Resume</h3>
+                        <p class="text-muted">Supports PDF, DOCX, TXT</p>
+                        <input type="file" id="fileInput" class="form-control" accept=".pdf,.docx,.txt">
+                    </div>
+                    
+                    <div id="analysisResults" class="mt-4"></div>
+                    <div id="loading" class="d-none">
+                        <div class="spinner-border text-primary" role="status"></div>
+                        <p class="mt-2">Analyzing your resume...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const dropzone = document.getElementById('dropzone');
+    const fileInput = document.getElementById('fileInput');
+    const loading = document.getElementById('loading');
+    
+    dropzone.addEventListener('click', () => fileInput.click());
+    
+    fileInput.addEventListener('change', async (e) => {
+        const file = e.target.files[0];
+        await uploadFile(file);
+    });
+    
+    async function uploadFile(file) {
+        const formData = new FormData();
+        formData.append('file', file);
+        
+        loading.classList.remove('d-none');
+        
+        try {
+            const response = await fetch('/', {
+                method: 'POST',
+                body: formData
+            });
+            
+            const data = await response.json();
+            displayResults(data);
+        } catch (error) {
+            console.error('Error:', error);
+        } finally {
+            loading.classList.add('d-none');
+        }
+    }
+    
+    function displayResults(data) {
+        // Add your result display logic here
+    }
+});
+</script>
 {% endblock %}

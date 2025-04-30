@@ -1,36 +1,55 @@
-from pathlib import Path
-from typing import List
+# app/utils/extract_text.py
+
+import io
+from typing import Union
+from werkzeug.datastructures import FileStorage
 
 import pdfplumber
+import docx
 
-__all__ = ["extract_text_from_pdf"]
 
-
-def extract_text_from_pdf(pdf_path: Path) -> str:
-    """Extract plain text from a PDF file.
-
-    Parameters
-    ----------
-    pdf_path : Path
-        Absolute or relative path to the PDF file the user uploaded.
-
-    Returns
-    -------
-    str
-        The concatenated text contents of every page in the PDF, with new‑line
-        separators preserved where possible. If a page has no text it is
-        skipped.
+def extract_text(file: FileStorage) -> str:
     """
+    Given a FileStorage (PDF, DOCX or TXT), returns its full text content.
+    """
+    filename = file.filename.lower()
 
-    if not pdf_path.exists() or pdf_path.suffix.lower() != ".pdf":
-        raise FileNotFoundError(f"PDF not found: {pdf_path}")
+    # PDF → use pdfplumber
+    if filename.endswith(".pdf"):
+        return _extract_pdf(file)
 
-    text_chunks: List[str] = []
-    with pdfplumber.open(str(pdf_path)) as pdf:
+    # DOCX → use python-docx
+    elif filename.endswith(".docx"):
+        return _extract_docx(file)
+
+    # Plain text → decode directly
+    elif filename.endswith(".txt"):
+        content = file.read()
+        try:
+            return content.decode("utf-8", errors="ignore")
+        finally:
+            file.stream.seek(0)
+
+    else:
+        raise ValueError(f"Unsupported file type: {filename}")
+
+
+def _extract_pdf(file: FileStorage) -> str:
+    text_chunks = []
+    # wrap stream in a BytesIO
+    with pdfplumber.open(io.BytesIO(file.read())) as pdf:
         for page in pdf.pages:
-            extracted = page.extract_text() or ""
-            text_chunks.append(extracted)
+            text_chunks.append(page.extract_text() or "")
+    # reset for any later reads
+    file.stream.seek(0)
+    return "\n".join(text_chunks)
 
-    # Remove empty strings and join with double new‑lines for readability
-    full_text = "\n\n".join(chunk for chunk in text_chunks if chunk.strip())
-    return full_text.strip()
+
+def _extract_docx(file: FileStorage) -> str:
+    text_chunks = []
+    # python-docx expects a filename or a file-like, so wrap stream
+    document = docx.Document(io.BytesIO(file.read()))
+    for para in document.paragraphs:
+        text_chunks.append(para.text)
+    file.stream.seek(0)
+    return "\n".join(text_chunks)

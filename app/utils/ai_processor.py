@@ -1,15 +1,44 @@
 # app/utils/ai_processor.py
+
 import os
-import openai
 from werkzeug.datastructures import FileStorage
+from openai import OpenAI
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+from app.utils.extract_text import extract_text
 
-def analyze_resume(pdf_file: FileStorage) -> str:
-    # ... your existing logic ...
-    result = openai.ChatCompletion.create(
-      model="gpt-4",
-      messages=[{ "role": "system", "content": "Analyze this resume..." },
-                { "role": "user",   "content": pdf_text }]
+# Initialize the new OpenAI client
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+
+def analyze_resume(resume_file: FileStorage) -> str:
+    """
+    1. Extract text from the uploaded resume (PDF/DOCX/TXT).
+    2. Send it to OpenAI via the new client interface.
+    3. Return the model's response as a string.
+    """
+    # 1) extract text
+    text = extract_text(resume_file)
+
+    # 2) build and send the chat-completion request
+    response = client.chat.completions.create(
+        model="gpt-4",
+        messages=[
+            {
+                "role": "system",
+                "content": (
+                    "You are an expert resume reviewer. "
+                    "Provide bullet-point feedback on structure, clarity, strengths, "
+                    "and areas for improvement."
+                ),
+            },
+            {
+                "role": "user",
+                "content": text,
+            },
+        ],
+        temperature=0.3,
+        max_tokens=800,
     )
-    return result.choices[0].message.content
+
+    # 3) extract and return the assistant's message
+    return response.choices[0].message.content

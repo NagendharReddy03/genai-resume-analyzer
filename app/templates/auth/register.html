@@ -1,34 +1,49 @@
-<!-- app/templates/auth/register.html -->
 {% extends "base.html" %}
 {% block content %}
-<h2 class="mb-4">Register</h2>
-<form method="post" novalidate>
-  {{ form.hidden_tag() }}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+      <div class="card shadow-sm">
+        <div class="card-body p-4">
+          <h3 class="card-title mb-4 text-center">Create an Account</h3>
+          <form method="POST" novalidate>
+            {{ form.hidden_tag() }}
 
-  <div class="mb-3">
-    {{ form.email.label(class="form-label") }}
-    {{ form.email(class="form-control") }}
-    {% for err in form.email.errors %}
-      <div class="text-danger small">{{ err }}</div>
-    {% endfor %}
+            <div class="mb-3">
+              {{ form.email.label(class="form-label") }}
+              {{ form.email(class="form-control", placeholder="you@example.com") }}
+              {% for e in form.email.errors %}
+                <div class="form-text text-danger">{{ e }}</div>
+              {% endfor %}
+            </div>
+
+            <div class="mb-3">
+              {{ form.password.label(class="form-label") }}
+              {{ form.password(class="form-control", placeholder="••••••••") }}
+              {% for e in form.password.errors %}
+                <div class="form-text text-danger">{{ e }}</div>
+              {% endfor %}
+            </div>
+
+            <div class="mb-3">
+              {{ form.confirm_password.label(class="form-label") }}
+              {{ form.confirm_password(class="form-control", placeholder="••••••••") }}
+              {% for e in form.confirm_password.errors %}
+                <div class="form-text text-danger">{{ e }}</div>
+              {% endfor %}
+            </div>
+
+            <div class="d-grid mb-3">
+              {{ form.submit(class="btn btn-primary btn-block") }}
+            </div>
+          </form>
+          <p class="text-center mb-0">
+            Already have an account?
+            <a href="{{ url_for('auth.login') }}">Log in</a>
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="mb-3">
-    {{ form.password.label(class="form-label") }}
-    {{ form.password(class="form-control") }}
-    {% for err in form.password.errors %}
-      <div class="text-danger small">{{ err }}</div>
-    {% endfor %}
-  </div>
-
-  <div class="mb-3">
-    {{ form.confirm_password.label(class="form-label") }}
-    {{ form.confirm_password(class="form-control") }}
-    {% for err in form.confirm_password.errors %}
-      <div class="text-danger small">{{ err }}</div>
-    {% endfor %}
-  </div>
-
-  <button type="submit" class="btn btn-primary">{{ form.submit.label.text }}</button>
-</form>
+</div>
 {% endblock %}

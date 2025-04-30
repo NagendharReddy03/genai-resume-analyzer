@@ -1,14 +1,5 @@
 {% extends "base.html" %}
-
 {% block content %}
-  <h1 class="mb-4">Welcome, {{ current_user.email if current_user.is_authenticated else "Guest" }}</h1>
-
-  {% if current_user.is_authenticated %}
-    <a class="btn btn-primary" href="{{ url_for('main.upload') }}">
-      Upload Your Resume
-    </a>
-  {% else %}
-    <p>Please <a href="{{ url_for('auth.login') }}">log in</a> or
-      <a href="{{ url_for('auth.register') }}">register</a> to continue.</p>
-  {% endif %}
+  <!-- You can put any additional content here if you want,
+       but for the landing page all you need is the hero above. -->
 {% endblock %}

@@ -1,19 +1,31 @@
 {% extends "base.html" %}
 
+{% block title %}Upload Resume – AI Resume Analyzer{% endblock %}
+
+{% block hero_title %}Instant AI Resume Feedback{% endblock %}
+{% block hero_subtitle %}
+Select a resume file (PDF, DOCX or TXT) and hit “Analyze” below.
+{% endblock %}
+{% block hero_button %}{% endblock %}  {# hide the hero button on this page #}
+
 {% block content %}
-  <h2>Upload Resume</h2>
-  <form 
-    method="post" 
-    action="{{ url_for('main.upload') }}" 
-    enctype="multipart/form-data"
-  >
-    {{ form.hidden_tag() }}
-    <div class="mb-3">
-      {{ form.resume.label(class="form-label") }}
-      {{ form.resume(class="form-control") }}
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h2 class="card-title mb-4">Upload Your Resume</h2>
+        <form method="post" enctype="multipart/form-data">
+          {{ form.hidden_tag() }}
+          <div class="mb-3">
+            {{ form.resume.label(class="form-label") }}
+            {{ form.resume(class="form-control") }}
+          </div>
+          <button type="submit" class="btn btn-primary">
+            {{ form.submit.label.text or 'Analyze Resume' }}
+          </button>
+        </form>
+      </div>
     </div>
-    <button type="submit" class="btn btn-primary">
-      Analyze Resume
-    </button>
-  </form>
+  </div>
+</div>
 {% endblock %}

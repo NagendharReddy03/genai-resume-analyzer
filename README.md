@@ -15,19 +15,19 @@
 
 ---
 
-## 📃 Features
+## Features
 
-- 🧠 AI-based resume feedback using OpenAI
-- 📄 Resume parsing and keyword extraction
-- 🔐 Secure login and registration system
-- 📈 Real-time analysis via Swagger UI
-- 🐳 Fully Dockerized with CI/CD support
-- 🌐 FastAPI-powered backend with responsive design
+- AI-based resume feedback using OpenAI
+- Resume parsing and keyword extraction
+- Secure login and registration system
+- Real-time analysis via Swagger UI
+- Fully Dockerized with CI/CD support
+- FastAPI-powered backend with responsive design
 
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Layer      | Technology                        |
 |------------|-----------------------------------|
@@ -39,7 +39,7 @@
 
 ---
 
-## ⚙️ Getting Started
+## Getting Started
 
 ```bash
 # Clone repository
@@ -59,7 +59,7 @@ Visit: http://localhost:8000
 
 ---
 
-## 📂 Directory Structure
+## Directory Structure
 
 ```bash
 .
@@ -77,13 +77,13 @@ Visit: http://localhost:8000
 
 ---
 
-## 🧪 Test Your API
+## Test Your API
 
 > Visit [http://localhost:8000/docs](http://localhost:8000/docs) to access interactive Swagger UI and test your endpoints.
 
 ---
 
-## 📌 TODO
+## TODO
 
 - [ ] JD Matching System
 - [ ] Role-based scoring
@@ -92,21 +92,21 @@ Visit: http://localhost:8000
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are always welcome! Please fork this repo and submit a pull request. Let’s build better hiring tools together. 
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-## 👋 Connect
+## Connect
 
-- 👨‍💻 GitHub: [@NagendharReddy03](https://github.com/NagendharReddy03)
-- 📫 Email: nagendharreddy.work@gmail.com
-- 🌐 LinkedIn: [Connect with me](https://www.linkedin.com/in/nagendharreddy/)
+- GitHub: [@NagendharReddy03](https://github.com/NagendharReddy03)
+- Email: nagendharreddy.work@gmail.com
+- LinkedIn: [Connect with me](https://www.linkedin.com/in/nagendharreddy/)
 

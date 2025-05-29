@@ -108,7 +108,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 - 👨‍💻 GitHub: [@NagendharReddy03](https://github.com/NagendharReddy03)
 - 📫 Email: nagendharreddy.work@gmail.com
-- 🌐 LinkedIn: [Connect with me](https://linkedin.com/in/NagendharReddy03)
+- 🌐 LinkedIn: [Connect with me](https://www.linkedin.com/in/nagendharreddy/)
 
 ---
 

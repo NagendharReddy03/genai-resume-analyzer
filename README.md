@@ -1,7 +1,5 @@
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/842748/235327620-cd7ee1a2-62e7-46fd-a6f8-df183be2f9d5.png" alt="GenAI Resume Analyzer Banner"/>
-</p>
-
+ 
 <h1 align="center">🧠 GenAI Resume Analyzer</h1>
 
 <p align="center">
@@ -26,13 +24,6 @@
 - 🐳 Fully Dockerized with CI/CD support
 - 🌐 FastAPI-powered backend with responsive design
 
----
-
-## 🔍 Preview
-
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/842748/235328139-5ac2d7b2-85b5-4424-9eac-306b234d8e3f.png" alt="Resume Analyzer Demo Screenshot" width="600"/>
-</p>
 
 ---
 

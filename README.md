@@ -1,6 +1,6 @@
 <p align="center">
  
-<h1 align="center">🧠 GenAI Resume Analyzer</h1>
+<h1 align="center"> GenAI Resume Analyzer</h1>
 
 <p align="center">
   <em>AI-powered resume feedback system that helps recruiters and applicants evaluate resumes with precision and intelligence.</em>
@@ -15,7 +15,7 @@
 
 ---
 
-## 🚀 Features
+## 📃 Features
 
 - 🧠 AI-based resume feedback using OpenAI
 - 📄 Resume parsing and keyword extraction
@@ -94,7 +94,7 @@ Visit: http://localhost:8000
 
 ## 🤝 Contributing
 
-Contributions are always welcome! Please fork this repo and submit a pull request. Let’s build better hiring tools together. 💼
+Contributions are always welcome! Please fork this repo and submit a pull request. Let’s build better hiring tools together. 
 
 ---
 
@@ -104,7 +104,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-## 🙋‍ Connect
+## 👋 Connect
 
 - 👨‍💻 GitHub: [@NagendharReddy03](https://github.com/NagendharReddy03)
 - 📫 Email: nagendharreddy.work@gmail.com

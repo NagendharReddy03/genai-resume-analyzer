@@ -1,73 +1,126 @@
-GenAI Resume Analyzer 🧠📄
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/842748/235327620-cd7ee1a2-62e7-46fd-a6f8-df183be2f9d5.png" alt="GenAI Resume Analyzer Banner"/>
+</p>
 
-A powerful, AI-driven resume screening tool that helps recruiters and job seekers by automating resume analysis, extracting key information, and generating insightful feedback using Generative AI.
+<h1 align="center">🧠 GenAI Resume Analyzer</h1>
 
-🔍 Project Overview
+<p align="center">
+  <em>AI-powered resume feedback system that helps recruiters and applicants evaluate resumes with precision and intelligence.</em>
+</p>
 
-GenAI Resume Analyzer is a modern web application built to:
-	•	Parse and extract structured data from resumes
-	•	Use NLP and Generative AI to assess resumes
-	•	Offer intelligent feedback on strengths, keywords, and improvement areas
-	•	Streamline the resume screening process for hiring teams
+<p align="center">
+  <img src="https://img.shields.io/github/languages/top/NagendharReddy03/genai-resume-analyzer?style=for-the-badge"/>
+  <img src="https://img.shields.io/github/last-commit/NagendharReddy03/genai-resume-analyzer?style=for-the-badge"/>
+  <img src="https://img.shields.io/github/issues/NagendharReddy03/genai-resume-analyzer?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Status-In%20Development-yellow?style=for-the-badge"/>
+</p>
 
-🚀 Features
-	•	✅ Resume upload and parsing
-	•	🧠 AI-generated resume feedback using OpenAI API
-	•	📊 Keyword extraction and job fit insights
-	•	🔐 Secure login & registration
-	•	📦 Dockerized for easy deployment
-	•	🌐 CI/CD-ready with GitHub Actions and Docker Compose
+---
 
-🛠️ Tech Stack
-Technology
-Purpose
-Python
-Core backend logic and scripts
-FastAPI
-RESTful API for resume analysis
-OpenAI API
-Generative feedback engine
-Docker
-Containerization
-GitHub Actions
-CI/CD workflow automation
-SQLite
-Lightweight database integration
-HTML/CSS/JS
-User interface
+## 🚀 Features
 
-🧱 Project Structure
-genai-resume-analyzer/
-├── app/
-│   ├── main.py
-│   ├── inference.py
-│   └── train.py
-├── templates/
-├── uploads/
-├── .github/workflows/docker-ci.yml
-├── docker-compose.yml
-├── Dockerfile
-└── README.md
+- 🧠 AI-based resume feedback using OpenAI
+- 📄 Resume parsing and keyword extraction
+- 🔐 Secure login and registration system
+- 📈 Real-time analysis via Swagger UI
+- 🐳 Fully Dockerized with CI/CD support
+- 🌐 FastAPI-powered backend with responsive design
 
-⚙️ Setup Instructions
-	1.	Clone the repository: git clone https://github.com/NagendharReddy03/genai-resume-analyzer.git
-cd genai-resume-analyzer
-  2.  Create a .env file and add your OpenAI API Key: OPENAI_API_KEY=your_openai_key_here
-  3.	Build and run with Docker Compose: docker-compose up --build
-  4.	Access the app: Visit http://localhost:8000 in your browser.
-  
-🧪 Test the Endpoint
-	•	Visit: http://localhost:8000/docs
-	•	Try the /analyze endpoint with a test resume input.
+---
 
-📈 Future Enhancements
-	•	Job description matching
-	•	Role-based feedback and scoring
-	•	Integration with ATS platforms
-	•	Advanced visual analytics
+## 🔍 Preview
 
-📄 License
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/842748/235328139-5ac2d7b2-85b5-4424-9eac-306b234d8e3f.png" alt="Resume Analyzer Demo Screenshot" width="600"/>
+</p>
 
-This project is open-source and available under the MIT License. 
+---
 
-Contributions welcome! If you have ideas or find bugs, feel free to open an issue or submit a pull request.
+## 🛠️ Tech Stack
+
+| Layer      | Technology                        |
+|------------|-----------------------------------|
+| Backend    | Python, FastAPI, SQLite           |
+| AI Engine  | OpenAI GPT API                    |
+| Frontend   | HTML, CSS, Jinja2                 |
+| DevOps     | Docker, GitHub Actions, CI/CD     |
+| Infra      | Docker Compose                    |
+
+---
+
+## ⚙️ Getting Started
+
+```bash
+# Clone repository
+$ git clone https://github.com/NagendharReddy03/genai-resume-analyzer.git
+$ cd genai-resume-analyzer
+
+# Add your OpenAI key
+$ cp .env.example .env
+# Add OPENAI_API_KEY=your_api_key_here
+
+# Build and run containers
+$ docker-compose up --build
+
+# Open in browser
+Visit: http://localhost:8000
+```
+
+---
+
+## 📂 Directory Structure
+
+```bash
+.
+├── app
+│   ├── main.py            # Entry point
+│   ├── inference.py       # AI logic
+│   └── train.py           # Model training
+├── templates              # HTML templates
+├── uploads                # Resume uploads
+├── .github/workflows      # CI/CD
+├── Dockerfile             # Docker config
+├── docker-compose.yml     
+└── .env.example           # Environment variables
+```
+
+---
+
+## 🧪 Test Your API
+
+> Visit [http://localhost:8000/docs](http://localhost:8000/docs) to access interactive Swagger UI and test your endpoints.
+
+---
+
+## 📌 TODO
+
+- [ ] JD Matching System
+- [ ] Role-based scoring
+- [ ] Feedback PDF Export
+- [ ] Resume template suggestions
+
+---
+
+## 🤝 Contributing
+
+Contributions are always welcome! Please fork this repo and submit a pull request. Let’s build better hiring tools together. 💼
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+## 🙋‍ Connect
+
+- 👨‍💻 GitHub: [@NagendharReddy03](https://github.com/NagendharReddy03)
+- 📫 Email: nagendharreddy.work@gmail.com
+- 🌐 LinkedIn: [Connect with me](https://linkedin.com/in/NagendharReddy03)
+
+---
+
+<p align="center">
+  <em>"Build smarter applications with the power of Generative AI."</em>
+</p>

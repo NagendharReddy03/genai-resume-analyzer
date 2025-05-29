@@ -110,8 +110,3 @@ This project is licensed under the [MIT License](LICENSE).
 - 📫 Email: nagendharreddy.work@gmail.com
 - 🌐 LinkedIn: [Connect with me](https://www.linkedin.com/in/nagendharreddy/)
 
----
-
-<p align="center">
-  <em>"Build smarter applications with the power of Generative AI."</em>
-</p>
